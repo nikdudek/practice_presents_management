@@ -2,6 +2,14 @@ package practice_presents_management;
 
 public class Present {
 	
+	private static final int DEFAULT_SWEETS_CAPACITY = 10;
+	private Sweet[] sweets;
+	private int lastIndexAdded;
+	
+	{
+		sweets = new Sweet[DEFAULT_SWEETS_CAPACITY];
+	}
+	
 	// the method filters sweets by sugar weight inclusively
 	public Sweet[] filterSweetsBySugarRange(double minSugarWeight, double maxSugarWeight) {
 		//<write your code here>
@@ -24,6 +32,6 @@ public class Present {
 	// Also array shouldn’t contain null values.
 
 	public Sweet[] getSweets() {
-	//<write your code here>
+		//to_do
 	}
 }
