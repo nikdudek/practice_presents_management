@@ -36,7 +36,7 @@ public class Present {
 
 	// the method that adds sweet to the present
 	public void addSweet(Sweet sweet) {
-	//<write your code here>
+		
 	}
 
 
