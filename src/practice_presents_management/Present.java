@@ -1,5 +1,7 @@
 package practice_presents_management;
 
+import java.util.Arrays;
+
 public class Present {
 	
 	private static final int DEFAULT_SWEETS_CAPACITY = 10;
@@ -12,12 +14,24 @@ public class Present {
 	
 	// the method filters sweets by sugar weight inclusively
 	public Sweet[] filterSweetsBySugarRange(double minSugarWeight, double maxSugarWeight) {
-		//<write your code here>
+		Sweet[] copyOfSweets = new Sweet[sweets.length];
+		int index = 0;
+		for(Sweet sweet : sweets) {
+			if(sweet.getSugarWeight() >= minSugarWeight || sweet.getSugarWeight() <= maxSugarWeight)
+				copyOfSweets[index++] = sweet;
 		}
+		return copyOfSweets;
+	}
+		}
+	}
 	
 	// the method calculates total weight of the present
 	public double calculateTotalWeight() {
-	//<write your code here>
+		double totalWeight = 0.0;
+		for(Sweet sweet : sweets) {
+			totalWeight += sweet.getWeight();
+		}
+		return totalWeight;
 	}	
 
 	// the method that adds sweet to the present
@@ -32,6 +46,9 @@ public class Present {
 	// Also array shouldn’t contain null values.
 
 	public Sweet[] getSweets() {
-		//to_do
+		Sweet[] copyOfSweets = Arrays.copyOf(sweets, sweets.length);
+		for(Sweet sweet : copyOfSweets) {
+			if(sweet.getSugarWeight() < minSugarWeight || sweet.getSugarWeight() > maxSugarWeight)
+				sweet = null;
 	}
 }

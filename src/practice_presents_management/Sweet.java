@@ -4,13 +4,6 @@ public abstract class Sweet {
 	String name;
 	double weight;
 	double sugarWeight;
-	
-	public Sweet(String name, double weight, double sugarWeight) {
-		super();
-		this.name = name;
-		this.weight = weight;
-		this.sugarWeight = sugarWeight;
-	}
 
 	public String getName() {
 		return name;
@@ -34,5 +27,10 @@ public abstract class Sweet {
 
 	public void setSugarWeight(double sugarWeight) {
 		this.sugarWeight = sugarWeight;
+	}
+
+	@Override
+	public String toString() {
+		return "Sweet [name=" + name + ", weight=" + weight + ", sugarWeight=" + sugarWeight + "]";
 	}
 }
