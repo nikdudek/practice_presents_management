@@ -15,10 +15,16 @@ public class Present {
 	
 	// the method filters sweets by sugar weight inclusively
 	public Sweet[] filterSweetsBySugarRange(double minSugarWeight, double maxSugarWeight) {
-		Sweet[] copyOfSweets = new Sweet[sweets.length];
+		int filteredSweetsCounter = 0;
+		for(Sweet sweet : sweets) {
+			if(sweet != null && (sweet.getSugarWeight() >= minSugarWeight && sweet.getSugarWeight() <= maxSugarWeight))
+				filteredSweetsCounter++;
+		}
+		
+		Sweet[] copyOfSweets = new Sweet[filteredSweetsCounter];
 		int index = 0;
 		for(Sweet sweet : sweets) {
-			if(sweet.getSugarWeight() >= minSugarWeight || sweet.getSugarWeight() <= maxSugarWeight)
+			if(sweet != null && (sweet.getSugarWeight() >= minSugarWeight && sweet.getSugarWeight() <= maxSugarWeight))
 				copyOfSweets[index++] = sweet;
 		}
 		return copyOfSweets;
@@ -27,9 +33,10 @@ public class Present {
 	// the method calculates total weight of the present
 	public double calculateTotalWeight() {
 		double totalWeight = 0.0;
-		for(Sweet sweet : sweets) {
-			totalWeight += sweet.getWeight();
-		}
+		for(Sweet sweet : sweets)
+			if(sweet != null)
+				totalWeight += sweet.getWeight();
+		
 		return totalWeight;
 	}	
 
