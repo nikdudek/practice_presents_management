@@ -10,6 +10,7 @@ public class Present {
 	
 	{
 		sweets = new Sweet[DEFAULT_SWEETS_CAPACITY];
+		lastIndexAdded = 0;
 	}
 	
 	// the method filters sweets by sugar weight inclusively
@@ -21,8 +22,6 @@ public class Present {
 				copyOfSweets[index++] = sweet;
 		}
 		return copyOfSweets;
-	}
-		}
 	}
 	
 	// the method calculates total weight of the present
@@ -36,7 +35,11 @@ public class Present {
 
 	// the method that adds sweet to the present
 	public void addSweet(Sweet sweet) {
-		
+		if(sweet == null)
+			return;
+		if(lastIndexAdded + 1 >= sweets.length)
+			sweets = Arrays.copyOf(sweets, sweets.length * 2);
+		sweets[lastIndexAdded++] = sweet;
 	}
 
 
@@ -46,9 +49,11 @@ public class Present {
 	// Also array shouldn’t contain null values.
 
 	public Sweet[] getSweets() {
-		Sweet[] copyOfSweets = Arrays.copyOf(sweets, sweets.length);
-		for(Sweet sweet : copyOfSweets) {
-			if(sweet.getSugarWeight() < minSugarWeight || sweet.getSugarWeight() > maxSugarWeight)
-				sweet = null;
+		int nullCount = 0;
+		for(Sweet sweet : sweets)
+			if(sweet == null)
+				nullCount++;
+		Sweet[] copyOfSweets = Arrays.copyOf(sweets, sweets.length - nullCount);
+		return copyOfSweets;
 	}
 }
